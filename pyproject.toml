@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coverage-cube"
+version = "0.1.0"
+description = "Coverage Cube — pluggable dynamical measurement substrate over a combinatorial complex. Provides SourceAdapters, MetricPlugins, four-proof authorship skills, and the contextual-skill library."
+readme = "s3/cubes/README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Brandon Fritz", email = "bdf1992.fb@gmail.com" }]
+license = { text = "Proprietary" }
+keywords = [
+    "coverage", "cube", "combinatorial complex", "semantic test",
+    "datum", "adapter", "metric", "signed datapoint", "regencies",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Development Status :: 4 - Beta",
+]
+dependencies = [
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+]
+
+[project.scripts]
+cube = "s3.cubes.cli:main"
+
+[project.urls]
+Homepage      = "https://github.com/bdf1992/DDD-CCC"
+Repository    = "https://github.com/bdf1992/DDD-CCC"
+Documentation = "https://github.com/bdf1992/DDD-CCC/blob/main/s3/cubes/README.md"
+"Release Notes" = "https://github.com/bdf1992/DDD-CCC/blob/main/RELEASE_NOTES.md"
+
+# --- Packaging --------------------------------------------------------------
+# Packages shipped:
+#   primitives.py                      — constants (Bott, FANO, V, ...)
+#   s3/combinatorial_complex.py        — base cell complex
+#   s3/cubes/**                        — the cube itself (adapters, metrics,
+#                                        services, proofs, skill_support,
+#                                        manifest, cli, ...)
+#   .claude/skills/**                  — authorship skills shipped alongside
+#                                        so bootstrap runs have the skill
+#                                        library available on install.
+
+[tool.setuptools]
+include-package-data = true
+py-modules = ["primitives"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = [
+    "s3",
+    "s3.cubes",
+    "s3.cubes.*",
+]
+
+[tool.setuptools.package-data]
+"s3.cubes" = [
+    "README.md",
+    "skill_tests/fixtures/**/*.md",
+    "skill_tests/fixtures/**/*.cs",
+    "skill_tests/fixtures/**/*.py",
+]

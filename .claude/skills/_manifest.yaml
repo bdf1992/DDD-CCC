@@ -1,0 +1,85 @@
+# Coverage Cube — Skill & Module Manifest
+#
+# The cube reads only modules declared here. Adding a module costs an
+# authorship skill + four proofs (pressure / data-derivable datum /
+# corrective hook / dual test) + an entry below.
+#
+# Manifest revision events are signed into the datapoint chain by manifest.py.
+# Schema: see s3/cubes/manifest.py.
+
+version: "0.1"
+instance: coverage-cube
+
+# --- Skills -----------------------------------------------------------------
+
+workflow_skills:
+  - cube
+
+authorship_skills:
+  - datum-design
+  - adapter-design
+  - metric-design
+  - observation-design
+  - dashboard-design
+  - sweep-design
+  - transducer-design      # STUB; full skill planned for a later release
+
+# --- Exports ----------------------------------------------------------------
+# Every exported module must have its four proofs green before it lists here.
+# `proof_status: ungated` = retrofit pending (existing module, proofs pending).
+# `proof_status: green`   = all four proofs verified by `cube proofs`.
+
+exports:
+  adapters:
+    - name: markdown
+      module: s3.cubes.adapters.filesystem_markdown
+      class: FilesystemMarkdownAdapter
+      proof_status: ungated
+    - name: obsidian
+      module: s3.cubes.adapters.obsidian_vault
+      class: ObsidianVaultAdapter
+      proof_status: green
+    - name: greenfield-jsonl
+      module: s3.cubes.adapters.greenfield_jsonl
+      class: GreenfieldJsonlAdapter
+      proof_status: ungated
+    - name: filesystem-code
+      module: s3.cubes.adapters.filesystem_code
+      class: FilesystemCodeAdapter
+      proof_status: ungated
+    - name: csharp-unity
+      module: s3.cubes.adapters.csharp_unity
+      class: CSharpUnityAdapter
+      proof_status: green
+      init_kwargs:
+        internal_prefix: CatalystCore   # demo value; matches fixture namespace
+    - name: regency
+      module: s3.cubes.adapters.regency
+      class: RegencyAdapter
+      proof_status: green
+      notes: "one SourceRecord per REGENCY-NNN-slug/ directory; outbound_refs = cross-Regency tokens"
+
+  metrics:
+    - name: coverage
+      module: s3.cubes.metrics.coverage
+      proof_status: ungated
+    - name: vacuum
+      module: s3.cubes.metrics.vacuum
+      proof_status: green
+      target_gap: "per-cell empty-placement surface across ranks"
+    - name: frustration
+      module: s3.cubes.metrics.frustration
+      proof_status: ungated
+    - name: richness
+      module: s3.cubes.metrics.richness
+      proof_status: ungated
+
+  datum_packs:
+    - name: staleness
+      module: s3.cubes.datums.packs.staleness
+      proof_status: ungated
+
+  sweeps: []
+  observations: []
+  transducers: []
+  dashboard_panels: []
