@@ -2,7 +2,16 @@
 
 **Domain-Driven Design × Constrained Cybernetic Combinatorial Complex.**
 
-A pluggable measurement substrate for LLM-assisted software engineering. Treats project knowledge (code, prose, wikis, schemas, source trees) as a network of volumes on a combinatorial complex. Measures coverage, vacuums, frustrations. Emits **typed, cited, signed** datums on an append-only chain. Refuses fabrication via machine-checkable schemas.
+Measures how much of a project's meaning its tests actually reach, and names
+what they miss. It reads code, prose, wikis, schemas and source trees as one
+structure, and reports two things a coverage percentage cannot:
+
+- a **vacuum** — somewhere the structure says a thing should sit, and nothing does;
+- a **frustration** — somewhere two things sit together that pull against each other.
+
+Each reading is emitted as a **datum**: typed, citing the file it was read from,
+signed, and appended to a chain that is never rewritten. A datum that cannot
+cite its source is refused by schema rather than reported as a guess.
 
 Installable as `coverage-cube 0.1.0` with the `cube` console script.
 
